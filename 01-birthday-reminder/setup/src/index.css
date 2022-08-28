@@ -174,7 +174,7 @@ main {
 .person p {
   margin-bottom: 0;
 }
-.container button {
+.container button, input {
   color: var(--clr-white);
   display: block;
   width: 100%;
