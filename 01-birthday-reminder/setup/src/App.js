@@ -4,10 +4,20 @@ import List from './List';
 function App() {
 
   const [people, setPeople] = useState(data)
-  console.log(people)
+  const [number, setNumber] = useState(0)
+  const [numberSelected, setNumberSelectd] = useState()
 
   function cleanAll(){
-    setPeople([])
+
+    var receivingData = data
+    setNumberSelectd(number)
+  
+    var  arrayPeople = receivingData.filter(function checkingPerson(person){
+      return person.age <= number
+      
+    });
+    
+    return arrayPeople
 
   };
 
@@ -24,9 +34,11 @@ function App() {
 
         <h3>{people.length} birthdays today</h3>
         <List people={people} />
-        <button onClick={cleanAll}>Clear All</button>
+        <input type='number' id="quantity" name="quantity" min={20} max={45} onChange={number => setNumber(number.target.value)}/>
+        <button onClick={() => setPeople(cleanAll)}>Checking age</button>
         <button onClick={refreshPage}>Refresh</button>
-
+        <p>Number {numberSelected}</p>
+        
       </section>
 
 
